@@ -17,20 +17,19 @@ public class AddressController {
     }
 
     @GetMapping("/all")
-    public Iterable<Address> findAll(){
+    public final Iterable<Address> findAll() {
 
         return addressServiceImpl.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Address> findById(@PathVariable Long id){
-
+    public final Optional<Address> findById(@PathVariable Long id) {
         return addressServiceImpl.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody Address address){
-        addressServiceImpl.add(address);
+    public final String add(@RequestBody Address address) {
+        return addressServiceImpl.add(address);
 
-
-    }}
+    }
+}

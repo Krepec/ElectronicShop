@@ -25,8 +25,9 @@ public class AddressServiceImpl implements AddressService {
         return addressRepository.findById(id);
     }
 
-    public void add(Address address) {
-        addressRepository.save(address);
+    public String add(Address address) {
+      Address address1 =   addressRepository.save(address);
+      return "Dodano adress o nr. ID " + address1.getId();
     }
 
 
