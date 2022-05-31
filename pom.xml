@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>toJestPopierdolone</artifactId>
+    <artifactId>ElectronickShop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>toJestPopierdolone</name>
-    <description>toJestPopierdolone</description>
+    <name>ElectronicsShop</name>
+    <description>ElectronicsShop</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -21,6 +21,11 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.4.2.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,10 +1,13 @@
 package com.example.electronicShop.item;
 
+import com.example.electronicShop.item.dao.Item;
+import com.example.electronicShop.item.dto.ItemDTO;
+
 public class ItemMapper {
 
-    private Item mapItemDAO(ItemDAO itemDAO){
-        return new Item(itemDAO.getId(),itemDAO.getName()
-                ,itemDAO.getPrice(),itemDAO.getCustomerDAO()
-                ,itemDAO.getManufacturerDAO());
+    private ItemDTO mapItemDAO(Item item){
+        return new ItemDTO(item.getId(), item.getName()
+                , item.getPrice(), item.getCustomerDAO()
+                , item.getManufacturerDAO());
     }
 }
