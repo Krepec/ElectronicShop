@@ -1,9 +1,9 @@
 package com.example.electronicShop.item.service;
 
-import com.example.electronicShop.item.dao.Item;
+import com.example.electronicShop.item.dto.ItemDTO;
 
 public interface ItemService {
 
-    String addItem(Item item);
-    Iterable<Item> findAllItems();
+    String addItem(ItemDTO itemDTO);
+    Iterable<ItemDTO> findAllItems();
 }

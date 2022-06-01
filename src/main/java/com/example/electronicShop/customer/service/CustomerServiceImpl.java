@@ -2,39 +2,49 @@ package com.example.electronicShop.customer.service;
 
 import com.example.electronicShop.customer.dao.Customer;
 import com.example.electronicShop.customer.dao.CustomerRepository;
+import com.example.electronicShop.customer.dto.CustomerDTO;
+import com.example.electronicShop.customer.mapper.CustomerMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-    private Customer customerDAOX;
+    private final CustomerMapper customerMapper;
 
-    CustomerServiceImpl(CustomerRepository customerRepository){
+    public CustomerServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper) {
         this.customerRepository = customerRepository;
-    }
-
-
-    @Override
-    public String add(Customer customer) {
-        customerDAOX = customerRepository.save(customer);
-        return "Klient " + customerDAOX.getName() + " dodany";
+        this.customerMapper = customerMapper;
     }
 
     @Override
-    public Iterable<Customer> findAll() {
-        return null;
+    public String add(CustomerDTO customerDTO) {
+        Customer customer = customerMapper.customerDTOtoCustormer(customerDTO);
+        customerRepository.save(customer);
+        return "Klient " + customer.getName() + " dodany";
     }
 
     @Override
-    public Optional<Customer> findById(Long id) {
-        return customerRepository.findById(id);
+    public Iterable<CustomerDTO> findAll() {
+        return customerRepository
+                .findAll()
+                .stream()
+                .map(customerMapper::customertoCustormerDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Customer> findByEmail(String email) {
-        return customerRepository.findByEmail(email);
+    public CustomerDTO findById(Long id) {
+        return customerMapper.customertoCustormerDTO(customerRepository.findById(id).orElseThrow());
+
+    }
+
+    @Override
+    public CustomerDTO findByEmail(String email) {
+        Customer customer = customerRepository.findByEmail(email).orElseThrow();
+        return customerMapper.customertoCustormerDTO;
     }
 }

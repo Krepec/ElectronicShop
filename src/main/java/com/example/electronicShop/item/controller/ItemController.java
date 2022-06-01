@@ -1,5 +1,6 @@
 package com.example.electronicShop.item.controller;
 
+import com.example.electronicShop.item.dto.ItemDTO;
 import com.example.electronicShop.item.service.ItemServiceImpl;
 import com.example.electronicShop.item.dao.Item;
 import com.example.electronicShop.manufacturer.dao.Manufacturer;
@@ -18,20 +19,13 @@ public class ItemController {
         this.itemServiceImpl = itemServiceImpl;
     }
 
-    @RequestMapping("/test")
-    public final String sayTest(){
-
-        itemServiceImpl.addItem(new Item(23L,"TV OLED55G23",6000.0, new ArrayList<>(), new Manufacturer(23L,"LG",new HashSet<>())));
-        return "test dodany";
-    }
-
     @PostMapping(value = "/add", consumes = "application/json")
-    public final String addItem(@RequestBody Item item){
-        return itemServiceImpl.addItem(item);
+    public final String addItem(@RequestBody ItemDTO itemDTO){
+        return itemServiceImpl.addItem(itemDTO);
     }
 
     @GetMapping("/all")
-    public final Iterable<Item> findAll(){
+    public final Iterable<ItemDTO> findAll(){
         return itemServiceImpl.findAllItems();
 
     }

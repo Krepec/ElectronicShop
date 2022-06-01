@@ -2,9 +2,11 @@ package com.example.electronicShop.manufacturer.service;
 
 
 import com.example.electronicShop.manufacturer.dao.Manufacturer;
+import com.example.electronicShop.manufacturer.dto.ManufacturerDTO;
 
-import java.util.List;public interface ManufacturerService {
+import java.util.List;
+public interface ManufacturerService {
 
-    List<Manufacturer> findAll();
-    String add(Manufacturer manufacturer);
+    List<ManufacturerDTO> findAll();
+    String add(ManufacturerDTO manufacturerDTO);
 }

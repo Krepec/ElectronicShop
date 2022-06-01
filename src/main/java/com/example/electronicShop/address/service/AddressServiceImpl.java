@@ -15,7 +15,7 @@ public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
     private final AddressMapper addressMapper;
 
-    AddressServiceImpl(AddressRepository addressRepository, AddressMapper addressMapper) {
+    public AddressServiceImpl(AddressRepository addressRepository, AddressMapper addressMapper) {
         this.addressRepository = addressRepository;
         this.addressMapper = addressMapper;
     }
@@ -24,7 +24,8 @@ public class AddressServiceImpl implements AddressService {
     public List<AddressDTO> findAll() {
         return addressRepository.findAll()
                 .stream()
-                .map(addressMapper::addressToAddressDTO).collect(Collectors.toList());
+                .map(addressMapper::addressToAddressDTO)
+                .collect(Collectors.toList());
     }
 
     public AddressDTO findById(Long id) {
