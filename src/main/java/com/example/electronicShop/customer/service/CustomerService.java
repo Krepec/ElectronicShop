@@ -10,5 +10,5 @@ public interface CustomerService {
 
     Iterable<CustomerDTO> findAll();
     CustomerDTO findById(Long id);
-    Optional<Customer> findByEmail(String email);
+    CustomerDTO findByEmail(String email);
 }

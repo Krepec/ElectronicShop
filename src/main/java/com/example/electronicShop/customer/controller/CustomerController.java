@@ -16,17 +16,19 @@ public class CustomerController {
     public CustomerController(CustomerServiceImpl customerServiceImpl) {
         this.customerServiceImpl = customerServiceImpl;
     }
-@GetMapping("/all")
-public final Iterable<CustomerDTO> findAll(){
-        return customerServiceImpl.findAll();
-}
 
-    @GetMapping("/{id}")
-    public final CustomerDTO findById(Long id){
+    @GetMapping("/all")
+    public final Iterable<CustomerDTO> findAll() {
+        return customerServiceImpl.findAll();
+    }
+
+    @GetMapping("/id/{id}")
+    public final CustomerDTO findById(Long id) {
         return customerServiceImpl.findById(id);
     }
-    @GetMapping("/{email}")
-    public final CustomerDTO findByEmail(String email){
+
+    @GetMapping("/email/{email}")
+    public final CustomerDTO findByEmail(String email) {
         return customerServiceImpl.findByEmail(email);
     }
 

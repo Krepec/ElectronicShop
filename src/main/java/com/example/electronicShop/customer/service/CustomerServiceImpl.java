@@ -6,7 +6,7 @@ import com.example.electronicShop.customer.dto.CustomerDTO;
 import com.example.electronicShop.customer.mapper.CustomerMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,13 +38,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO findById(Long id) {
-        return customerMapper.customertoCustormerDTO(customerRepository.findById(id).orElseThrow());
+        Customer customer = customerRepository.findById(id).orElseThrow(()-> new EntityNotFoundException());
+        return customerMapper.customertoCustormerDTO(customer);
 
     }
 
     @Override
     public CustomerDTO findByEmail(String email) {
-        Customer customer = customerRepository.findByEmail(email).orElseThrow();
-        return customerMapper.customertoCustormerDTO;
+        Customer customer = customerRepository.findByEmail(email).orElseThrow(() ->new EntityNotFoundException());
+        return customerMapper.customertoCustormerDTO(customer);
     }
 }
