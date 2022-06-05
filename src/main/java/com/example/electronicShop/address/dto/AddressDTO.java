@@ -81,4 +81,17 @@ public class AddressDTO {
     public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
+
+    @Override
+    public String toString() {
+        return "AddressDTO{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", building='" + building + '\'' +
+                ", flat='" + flat + '\'' +
+                ", zipCode=" + zipCode +
+                '}';
+    }
 }

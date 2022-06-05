@@ -6,6 +6,7 @@ import com.example.electronicShop.address.dto.AddressDTO;
 import com.example.electronicShop.address.mapper.AddressMapper;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,12 +30,16 @@ public class AddressServiceImpl implements AddressService {
     }
 
     public AddressDTO findById(Long id) {
-        return addressMapper.addressToAddressDTO(addressRepository.findById(id).orElseThrow());
+        return addressMapper.addressToAddressDTO(addressRepository.findById(id).orElseThrow(() ->new EntityNotFoundException("Address with ID " + id + " not exist" )));
 
 }
 
     public Address add(AddressDTO addressDTO) {
-        return addressRepository.save(addressMapper.addressDTOtoAddress(addressDTO));
+        System.out.println(addressDTO);
+       Address address = addressMapper.addressDTOtoAddress(addressDTO);
+        System.out.println(address);
+
+        return addressRepository.save(address);
 
     }
 

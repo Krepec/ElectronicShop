@@ -2,6 +2,7 @@ package com.example.electronicShop.customer.dao;
 
 import com.example.electronicShop.address.dao.Address;
 import com.example.electronicShop.item.dao.Item;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,11 +18,11 @@ public class Customer {
 
     private String name;
     private String email;
-
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(
             name = "item_customer",
-            joinColumns = @JoinColumn(name = "cutomer_id"),
+            joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> item = new ArrayList<>();
     @OneToMany
@@ -63,19 +64,19 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Item> getItemDAO() {
+    public List<Item> getItem() {
         return item;
     }
 
-    public void setItemDAOS(List<Item> item) {
+    public void setItem(List<Item> item) {
         this.item = item;
     }
 
-    public Set<Address> getAddressDAO() {
+    public Set<Address> getAddress() {
         return address;
     }
 
-    public void setAddressDAO(Set<Address> address) {
+    public void setAddress(Set<Address> address) {
         this.address = address;
     }
 }

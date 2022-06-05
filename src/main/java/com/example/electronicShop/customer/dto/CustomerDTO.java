@@ -53,19 +53,19 @@ public class CustomerDTO {
         this.email = email;
     }
 
-    public List<Item> getItemDAO() {
+    public List<Item> getItem() {
         return item;
     }
 
-    public void setItemDAO(List<Item> item) {
+    public void setItem(List<Item> item) {
         this.item = item;
     }
 
-    public Set<Address> getAddressDAO() {
+    public Set<Address> getAddress() {
         return address;
     }
 
-    public void setAddressDAO(Set<Address> address) {
+    public void setAddress(Set<Address> address) {
         this.address = address;
     }
 }

@@ -2,6 +2,7 @@ package com.example.electronicShop.item.dao;
 
 import com.example.electronicShop.customer.dao.Customer;
 import com.example.electronicShop.manufacturer.dao.Manufacturer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,12 +19,12 @@ public class Item {
 
     @Column(name = "price")
     private Double price;
-
-    @ManyToMany
-    @JoinTable(
+@JsonIgnore
+    @ManyToMany(mappedBy = "item")
+    /*@JoinTable(
             name = "item_customer",
             joinColumns = @JoinColumn(name = "item_id"),
-            inverseJoinColumns = @JoinColumn(name = "cutomer_id"))
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))*/
     private List<Customer> customer = new ArrayList<>();
 
     @ManyToOne
@@ -54,19 +55,19 @@ public class Item {
         this.price = price;
     }
 
-    public List<Customer> getCustomerDAO() {
+    public List<Customer> getCustomer() {
         return customer;
     }
 
-    public void setCustomerDAO(List<Customer> customer) {
+    public void setCustomer(List<Customer> customer) {
         this.customer = customer;
     }
 
-    public Manufacturer getManufacturerDAO() {
+    public Manufacturer getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturerDAO(Manufacturer manufacturer) {
+    public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
 

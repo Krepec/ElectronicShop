@@ -23,12 +23,12 @@ public class CustomerController {
     }
 
     @GetMapping("/id/{id}")
-    public final CustomerDTO findById(Long id) {
+    public final CustomerDTO findById(@PathVariable Long id) {
         return customerServiceImpl.findById(id);
     }
 
     @GetMapping("/email/{email}")
-    public final CustomerDTO findByEmail(String email) {
+    public final CustomerDTO findByEmail(@PathVariable String email) {
         return customerServiceImpl.findByEmail(email);
     }
 

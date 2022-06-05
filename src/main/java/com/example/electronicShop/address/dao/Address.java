@@ -13,6 +13,8 @@ public class Address {
     private String city;
     private String street;
     private String building;
+
+
     private String flat;
     @Column(name = "zip_code")
     private Integer zipCode;
@@ -28,6 +30,18 @@ public class Address {
     }
 
     public Address() {
+    }
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", building='" + building + '\'' +
+                ", flat='" + flat + '\'' +
+                ", zipCode=" + zipCode +
+                '}';
     }
 
     public Long getId() {

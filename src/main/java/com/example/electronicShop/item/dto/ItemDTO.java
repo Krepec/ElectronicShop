@@ -53,11 +53,11 @@ public class ItemDTO {
         this.price = price;
     }
 
-    public List<Customer> getCustomerDAO() {
+    public List<Customer> getCustomer() {
         return customer;
     }
 
-    public void setCustomerDAO(List<Customer> customer) {
+    public void setCustomer(List<Customer> customer) {
         this.customer = customer;
     }
 
