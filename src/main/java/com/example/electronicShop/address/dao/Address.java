@@ -1,8 +1,17 @@
 package com.example.electronicShop.address.dao;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
+@ToString
 public class Address {
 
     @Id
@@ -19,84 +28,6 @@ public class Address {
     @Column(name = "zip_code")
     private Integer zipCode;
 
-    public Address(Long id, String country, String city, String street, String building, String flat, Integer zipCode) {
-        this.id = id;
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.building = building;
-        this.flat = flat;
-        this.zipCode = zipCode;
-    }
 
-    public Address() {
-    }
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", building='" + building + '\'' +
-                ", flat='" + flat + '\'' +
-                ", zipCode=" + zipCode +
-                '}';
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getcountry() {
-        return country;
-    }
-
-    public void setcountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getBuilding() {
-        return building;
-    }
-
-    public void setBuilding(String building) {
-        this.building = building;
-    }
-
-    public String getFlat() {
-        return flat;
-    }
-
-    public void setFlat(String flat) {
-        this.flat = flat;
-    }
-
-    public Integer getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(Integer zipCode) {
-        this.zipCode = zipCode;
-    }
 }

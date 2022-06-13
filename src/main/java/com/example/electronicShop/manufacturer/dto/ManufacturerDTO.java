@@ -2,10 +2,16 @@ package com.example.electronicShop.manufacturer.dto;
 
 import com.example.electronicShop.address.dao.Address;
 import com.example.electronicShop.item.dao.Item;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
+@RequiredArgsConstructor
 public class ManufacturerDTO {
 
     private Long id;
@@ -16,36 +22,4 @@ public class ManufacturerDTO {
 
     private Set<Item> item = new HashSet<>();
 
-    public ManufacturerDTO(Long id, String name, Set<Address> address) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-    }
-
-    public ManufacturerDTO() {
-     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Address> getAddresses() {
-        return address;
-    }
-
-    public void setAddresses(Set<Address> addresses) {
-        this.address = addresses;
-    }
 }
